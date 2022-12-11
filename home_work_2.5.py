@@ -1,50 +1,54 @@
-# 2. Создайте программу для игры с конфетами человек против человека.
+# 3. Создайте программу для игры в ""Крестики-нолики"".
 
-# Условие задачи: На столе лежит 2021 конфета. Играют два игрока делая ход друг после друга. 
-# Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет. 
-# Все конфеты оппонента достаются сделавшему последний ход. Сколько конфет нужно взять первому игроку, 
-# чтобы забрать все конфеты у своего конкурента?
+#box = [
+#    [0,0,0],
+#    [0,0,0],
+#    [0,0,0]
+#    ]
 
-# вариант человек против человека:
-from random import choice
+#def print_box(func_box: list) -> str:
+#    return "{func_box[0]},{func_box[1]},{func_box[2]},\n,{func_box[3]},{func_box[4]},{func_box[5]}\n{func_box[6]},{func_box[7]},{func_box[8]}"
 
-def input_dat(name):
-    x = int(input(f"{name}, введите количество конфет, которое возьмете от 1 до 28: "))
-    while x < 1 or x > 28:
-        x = int(input(f"{name}, введите корректное количество конфет: "))
-    return x
+#print(box)
 
+import copy
+import fnmatch
 
-def p_print(name, k, counter, value):
-    print(f"Ходил {name}, он взял {k}, теперь у него {counter}. Осталось на столе {value} конфет.")
+mas = [
+        [1, 2, 3], 
+        [4, 5, 6], 
+        [7, 8, 9]
+       ]
 
-player1 = input("Введите имя первого игрока: ")
-player2 = input("Введите имя второго игрока: ")
-value = int(input("Введите количество конфет на столе: "))
-flag = choice([True, False]) # флаг очередности
-if flag:
-    print(f"Первый ходит {player1}")
-else:
-    print(f"Первый ходит {player2}")
+# вывод массива
+def print_box(func_box: list) -> str:
+    for i in func_box: 
+        print(' '.join(list(map(str, i))))
+    print('\n')
 
-counter1 = 0 
-counter2 = 0
+# заполнение массива
+def init_box(func_box: list, number: int) -> list:
+    for i in range(len(func_box)):
+        for j in range(len(func_box[i])): 
+            #print(func_box[i][j])
+            func_box[i][j] = number
+            ...
+    return func_box
 
-while value > 28:
-    if flag:
-        k = input_dat(player1)
-        counter1 += k
-        value -= k
-        flag = False
-        p_print(player1, k, counter1, value)
-    else:
-        k = input_dat(player2)
-        counter2 += k
-        value -= k
-        flag = True
-        p_print(player2, k, counter2, value)
+def dict_elements(func_box: list, number: int) -> list:
+    number = 5
+    match int(number):
+        case 1:
+            print('!!!')
+        case 2:
+            print('!!!')
+        case _:
+            print("!!!")
+    return func_box
 
-if flag:
-    print(f"Выиграл {player1}")
-else:
-    print(f"Выиграл {player2}")
+print(dict_elements)
+print_box(mas)
+b = []
+b = copy.deepcopy(mas)
+print_box(init_box(b,5))
+print_box(mas)
