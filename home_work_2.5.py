@@ -55,11 +55,19 @@ def data_decrypted(data: str) -> str:
             resault += data[i]
     return resault
 
-
-# Сжатие данных и их запись в файл
-data = recive_text_file('/4/data_decrypted/','data.txt')
-write_in_file(data_encrypted(data),'/4/data_encrypted/','resault.txt')
-
-# Распаковка данных и запись их в файл
-data = recive_text_file('/4/data_encrypted/','data.txt')
-write_in_file(data_decrypted(data),'/4/data_decrypted/','resault.txt')
+n = int(input('Ведите номер действия: 1 - сжатие данных; 2 - распаковка данных. Любая другая кнопка - выход из программы. Выберите вариант: '))
+str_ = os.getcwd()
+if n == 1:
+    str_ += '/4/data_decrypted/'
+    print(f"Выбрано действия для сжатия данных! Данные берутся из файла 'data.txt' в каталоге '{str_}'")
+    # Сжатие данных и их запись в файл
+    data = recive_text_file('/4/data_decrypted/','data.txt')
+    write_in_file(data_encrypted(data),'/4/data_encrypted/','resault.txt')
+elif n == 2:
+    str_ += '/4/data_encrypted/'
+    print(f"Выбрано действия для распаковки данных! Данные берутся из файла 'data.txt' в каталоге '{str_}'")
+    # Распаковка данных и запись их в файл
+    data = recive_text_file('/4/data_encrypted/','data.txt')
+    write_in_file(data_decrypted(data),'/4/data_decrypted/','resault.txt')
+else:
+    print("Выход из программы!")
